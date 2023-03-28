@@ -55,7 +55,7 @@ public class HomeController {
         if(selectedSong.isEmpty()){
             return "redirect:/songs";
         }else{
-            model.addAttribute("selectedSong", selectedSong.get().getTitle());
+            model.addAttribute("selectedSong", selectedSong.get());
         }
         return "selected-song";
     }
@@ -67,7 +67,7 @@ public class HomeController {
         if(selectedMovie.isEmpty()){
             return "redirect:/movies";
         }else{
-            model.addAttribute("selectedMovie", selectedMovie.get().getTitle());
+            model.addAttribute("selectedMovie", selectedMovie.get());
         }
         return "selected-movie";
     }
