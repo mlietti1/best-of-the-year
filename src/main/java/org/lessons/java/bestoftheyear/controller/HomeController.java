@@ -6,10 +6,12 @@ import org.lessons.java.bestoftheyear.model.Song;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Controller
@@ -44,6 +46,30 @@ public class HomeController {
         String titles = list.stream().map(Movie::getTitle).collect(Collectors.joining(", "));
         model.addAttribute("movies", titles);
         return "movies";
+    }
+
+    @GetMapping("/songs/{id}")
+    public String bestSong(Model model, @PathVariable(value = "id", required = false) int id){
+        List<Song> songs = getBestSongs();
+        Optional<Song> selectedSong = songs.stream().filter(song -> song.getId() == id).findFirst();
+        if(selectedSong.isEmpty()){
+            return "redirect:/songs";
+        }else{
+            model.addAttribute("selectedSong", selectedSong.get().getTitle());
+        }
+        return "selected-song";
+    }
+
+    @GetMapping("/movies/{id}")
+    public String bestMovie(Model model, @PathVariable(value = "id", required = false) int id){
+        List<Movie> movies = getBestMovies();
+        Optional<Movie> selectedMovie = movies.stream().filter(movie -> movie.getId() == id).findFirst();
+        if(selectedMovie.isEmpty()){
+            return "redirect:/movies";
+        }else{
+            model.addAttribute("selectedMovie", selectedMovie.get().getTitle());
+        }
+        return "selected-movie";
     }
 
     private List<Movie> getBestMovies(){
