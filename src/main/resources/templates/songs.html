@@ -9,7 +9,11 @@
     <title>Songs</title>
 </head>
 <body>
-<h1>Songs</h1>
-<div th:text="${songs}"></div>
+<nav th:replace="~{fragments :: navbar('home')}"></nav>
+    <div class="container mt-3">
+        <h2>Songs</h2>
+        <div th:text="${songs}"></div>
+    </div>
+
 </body>
 </html>

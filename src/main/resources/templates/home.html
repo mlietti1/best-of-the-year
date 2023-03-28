@@ -10,8 +10,9 @@
 </head>
 <body>
 <nav th:replace="~{fragments :: navbar('home')}"></nav>
-<h1>Home</h1>
-<h2>Best of the year by <span th:text="${name}"></span></h2>
-
+    <div class="container mt-3">
+        <h1>Home</h1>
+        <h2>Best of the year by <span th:text="${name}"></span></h2>
+    </div>
 </body>
 </html>

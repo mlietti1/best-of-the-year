@@ -9,7 +9,9 @@
     <title>Movies</title>
 </head>
 <body>
-<h1>Movies</h1>
-
+<nav th:replace="~{fragments :: navbar('home')}"></nav>
+di
+<h2>Movies</h2>
+<div th:text="${movies}"></div>
 </body>
 </html>

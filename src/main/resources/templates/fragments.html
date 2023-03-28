@@ -30,6 +30,13 @@
                   th:classAppend="${current == 'songs'} ? active : not-active"
           >Songs</a>
         </li>
+        <li class="nav-item">
+          <a
+                  th:href="@{/movies}"
+                  class="nav-link"
+                  th:classAppend="${current == 'movies'} ? active : not-active"
+          >Movies</a>
+        </li>
       </ul>
     </div>
   </div>
