@@ -9,11 +9,24 @@
     <title>Songs</title>
 </head>
 <body>
-<nav th:replace="~{fragments :: navbar('home')}"></nav>
+<nav th:replace="~{fragments :: navbar('songs')}"></nav>
     <div class="container mt-3">
-        <h2>Songs</h2>
-        <div th:text="${songs}"></div>
-    </div>
+        <h2 class="mb-3">Songs</h2>
 
+        <div class="gap-5 m-0 p-0 row row-cols-1 row-cols-sm-2 row-cols-md-4">
+            <div th:each="song : ${songs}" class="card col p-0">
+                <img th:src="${song.imgPath}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${song.title}"></h5>
+                    <p th:text="${song.artist}"></p>
+                    <p class="card-text text-secondary" th:text="${song.description}"></p>
+                    <a th:href="@{|/songs/${song.id}|}" class="btn btn-primary">See details</a>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>

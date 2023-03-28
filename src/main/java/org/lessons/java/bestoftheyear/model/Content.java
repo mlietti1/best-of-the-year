@@ -1,22 +1,20 @@
 package org.lessons.java.bestoftheyear.model;
 
 public class Content {
-    private int id;
+    private final int id;
     private String title;
     private String description;
+    private String imgPath;
 
-    public Content(int id, String title, String description) {
+    public Content(int id, String title, String description, String imgPath) {
         this.id = id;
         this.title = title;
         this.description = description;
+        this.imgPath = imgPath;
     }
 
     public int getId() {
         return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getTitle() {
@@ -33,6 +31,14 @@ public class Content {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     @Override

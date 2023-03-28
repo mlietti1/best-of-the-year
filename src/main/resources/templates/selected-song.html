@@ -1,15 +1,21 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{fragments :: resources}">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <title>Song Detail</title>
+    <div th:replace="~{fragments :: resources}"></div>
+    <title>Song Details</title>
 </head>
 <body>
-<h1>Selected Song:</h1>
-<p th:text="${selectedSong.getTitle()}"></p>
+<nav th:replace="~{fragments :: navbar('songs')}"></nav>
+<div class="container mt-3">
+    <h2 class="mb-3" th:text="${song.title}"></h2>
+    <h5 class="mb-3 text-secondary" th:text="|by ${song.artist}|"></h5>
+    <img class="poster mb-3" th:src="${song.imgPath}">
+    <p th:text="${song.description}"></p>
+</div>
+<th:block th:replace="~{fragments :: scripts}"></th:block>
 </body>
 </html>
