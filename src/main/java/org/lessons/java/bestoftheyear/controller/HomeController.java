@@ -24,27 +24,17 @@ public class HomeController {
         return "home";
     }
 
-    private List<Song> getBestSongs(){
-        List<Song> songs = new ArrayList<>();
-        songs.add(new Song("2 Be Loved", 1));
-        songs.add(new Song("Jaded", 2));
-        songs.add(new Song("Good Days", 3));
-        return songs;
-    }
-
     @GetMapping("/songs")
     public String songs (Model model){
         List<Song> list = getBestSongs();
-        String titles = list.stream().map(Song::getTitle).collect(Collectors.joining(", "));
-        model.addAttribute("songs", titles);
+        model.addAttribute("songs", list);
         return "songs";
     }
 
     @GetMapping("/movies")
     public String movies (Model model){
         List<Movie> list = getBestMovies();
-        String titles = list.stream().map(Movie::getTitle).collect(Collectors.joining(", "));
-        model.addAttribute("movies", titles);
+        model.addAttribute("movies", list);
         return "movies";
     }
 
@@ -72,11 +62,19 @@ public class HomeController {
         return "selected-movie";
     }
 
+    private List<Song> getBestSongs(){
+        List<Song> songs = new ArrayList<>();
+        songs.add(new Song(1, "2 Be Loved", "Song description", "Lizzo"));
+        songs.add(new Song(2,"Jaded", "Song description", "Miley Cyrus"));
+        songs.add(new Song(3, "Good Days", "Song description", "SZA"));
+        return songs;
+    }
+
     private List<Movie> getBestMovies(){
         List<Movie> movies = new ArrayList<>();
-        movies.add(new Movie("Do Revenge", 1));
-        movies.add(new Movie("Everything Everywhere All at Once", 2));
-        movies.add(new Movie("The Dirt", 3));
+        movies.add(new Movie(1, "Do Revenge", "A dethroned queen bee at a posh private high school strikes a secret deal with an unassuming new student to exact revenge on each other's enemies.", "Jennifer Kaytin Robinson"));
+        movies.add(new Movie(2, "Everything Everywhere All at Once", "When an interdimensional rupture unravels reality, an unlikely hero must channel her newfound powers to fight bizarre and bewildering dangers from the multiverse as the fate of the world hangs in the balance.", "Daniel Kwan"));
+        movies.add(new Movie(3, "The Dirt", "In this unflinching biopic based on Mötley Crüe's best-selling book, four LA misfits navigate the monster highs and savage lows of music superstardom.", "Jeff Tremaine"));
         return movies;
     }
 

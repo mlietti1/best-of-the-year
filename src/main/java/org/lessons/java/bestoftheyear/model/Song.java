@@ -1,27 +1,19 @@
 package org.lessons.java.bestoftheyear.model;
 
-public class Song {
-    private String title;
-    private int id;
+public class Song extends Content {
 
-    public Song(String title, int id) {
-        this.title = title;
-        this.id = id;
+    private final String artist;
+
+    public Song(int id, String title, String description, String artist) {
+        super(id, title, description);
+        this.artist = artist;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public String toString() {
+        return "Song{" +
+                super.toString() + '\'' +
+                "artist='" + artist + '\'' +
+                "} " + super.toString();
     }
 }
