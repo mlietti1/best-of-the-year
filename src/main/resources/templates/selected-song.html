@@ -13,6 +13,7 @@
 <div class="container mt-3">
     <h2 class="mb-3" th:text="${song.title}"></h2>
     <h5 class="mb-3 text-secondary" th:text="|by ${song.artist}|"></h5>
+    <h5 class="mb-3 text-secondary" th:text="|Album: ${song.album}|"></h5>
     <img class="poster mb-3" th:src="${song.imgPath}">
     <p th:text="${song.description}"></p>
 </div>
